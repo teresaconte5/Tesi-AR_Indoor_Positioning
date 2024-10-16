@@ -23,6 +23,7 @@ ref_lon = 14.171388  # Longitudine della porta
 x_offset = 2.5  # Distanza lungo X
 y_offset = 2.03  # Distanza lungo Y
 
+#commento
 
 # Funzione per connettersi al database MySQL
 def connect_to_mysql():
