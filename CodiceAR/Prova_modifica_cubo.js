@@ -223,7 +223,28 @@ async function main() {
      console.log(rssi_data);
      console.log(object_AR);
 
-    setInterval(() => fake_update(cam,arjs), 8000);
+    // Controlla se la risposta è valida
+    if (rssi_data && rssi_data.result === "true") {
+        const rssi_data2 = rssi_data.rssi_data; // Accedi all'array di dati RSSI
+
+        // Controlla se rssi_data è un array
+        if (Array.isArray(rssi_data2)) {
+            // Cicla attraverso ogni punto dati
+            rssi_data2.forEach(dataPoint => {
+                const lat = parseFloat(dataPoint.latitude.trim());   // Accedi alla latitudine
+                const long = parseFloat(dataPoint.longitude.trim());  // Accedi alla longitudine
+                console.log(`Latitudine: ${lat}, Longitudine: ${long}`);
+
+                // chiamo la funzione fake_update per ciascun punto dati se necessario
+                setInterval(() => fake_update(cam,arjs,lat,long), 8000);
+
+            });
+        } else {
+            console.error('rssi_data non è un array:', rssi_data);
+        }
+    } else {
+        console.error('Nessun dato RSSI disponibile o errore nella risposta.');
+    }
 
 
 }
