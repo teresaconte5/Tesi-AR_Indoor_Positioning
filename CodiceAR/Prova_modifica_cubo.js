@@ -225,9 +225,9 @@ async function main() {
 
     // Controlla se la risposta è valida
     if (rssi_data && rssi_data.result === "true") {
-        const rssi_data2 = rssi_data.rssi_data; // Accedi all'array di dati RSSI
+        const rssi_data2 = rssi_data.rssi_data; //Accedi all'array di dati RSSI
 
-        // Controlla se rssi_data è un array
+        // Controllo se rssi_data è un array
         if (Array.isArray(rssi_data2)) {
             // Cicla attraverso ogni punto dati
             rssi_data2.forEach(dataPoint => {
