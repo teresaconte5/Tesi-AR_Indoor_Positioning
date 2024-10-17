@@ -11,7 +11,7 @@ export function fake_update(cam, arjs, lat, long) { // Aggiungo lat e long come 
         fake = { lat: lat, lon: long }; // Imposta fake a lat e lon ricevuti
         console.log(`Test è 0: imposta fake a lat ${lat}, lon ${long}`);
     } else {
-        fake = { lat: lat + 0.017, lon: long }; // Puoi modificare qui se desideri variare leggermente
+        fake = { lat: lat + 0.017, lon: long }; // modifico qui se desidero variare leggermente
         console.log(`Test è 1: imposta fake a lat ${lat + 0.017}, lon ${long}`);
     }
 
