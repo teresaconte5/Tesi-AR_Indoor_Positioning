@@ -25,7 +25,7 @@ class Positioning:
             self.model_y = RandomForestRegressor(random_state=kwargs.get(' random_state', 42))
         else:
             raise ValueError(f"Modello {model_type} non supportato.")
-
+   ###############################################################################################################################
     def optimize_model(self, X_train, y_train):
         """
         Ottimizza i modelli base usando GridSearchCV.
@@ -79,6 +79,8 @@ class Positioning:
 
         return combined_predictions
 
+
+   ###############################################################################################################################
     def train(self, rps, scaler=None):
         X_train = []
         y_train = []
@@ -104,27 +106,6 @@ class Positioning:
         # Addestra i modelli
         self.model_x.fit(X_train_split, y_train_split[:, 0])  # x
         self.model_y.fit(X_train_split, y_train_split[:, 1])  # y
-        ###############################################################################################################################
-        # Valutazione
-        print("Performance su test:")
-        evaluate_model(self.model_x, X_train_split, y_train_split[:, 0], X_test_split, y_test_split[:, 0])
-        evaluate_model(self.model_y, X_train_split, y_train_split[:, 1], X_test_split, y_test_split[:, 1])
+     
+        
 
-
-def evaluate_model(model, X_train, y_train, X_test, y_test):
-    """
-    Valuta le performance del modello sui dati di training e test.
-    """
-    y_pred_train = model.predict(X_train)
-    mse_train = mean_squared_error(y_train, y_pred_train)
-    r2_train = r2_score(y_train, y_pred_train)
-
-    print(f"Performance sul training set:\n"
-          f"MSE: {mse_train}, R²: {r2_train}\n")
-
-    y_pred_test = model.predict(X_test)
-    mse_test = mean_squared_error(y_test, y_pred_test)
-    r2_test = r2_score(y_test, y_pred_test)
-
-    print(f"Performance sul test set:\n"
-          f"MSE: {mse_test}, R²: {r2_test}\n")

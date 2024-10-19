@@ -23,7 +23,8 @@ ref_lon = 14.171388  # Longitudine della porta
 x_offset = 2.5  # Distanza lungo X
 y_offset = 2.03  # Distanza lungo Y
 
-#commento
+
+###############################################################################################################################
 
 # Funzione per connettersi al database MySQL
 def connect_to_mysql():
@@ -59,6 +60,7 @@ def connect_to_mysql():
         sys.exit("Errore fatale: impossibile connettersi al database MySQL.")
 
 
+###############################################################################################################################
 # Funzione per memorizzare i dati RSSI nel database MySQL
 def store_rssi_data(cursor, db_conn, position_id, rssi_value, coordinates):
     try:
@@ -89,20 +91,12 @@ def store_rssi_data(cursor, db_conn, position_id, rssi_value, coordinates):
         logging.error(f"Errore durante l'inserimento dei dati nel database MySQL: {err}")
 
 
-# Caricamento dati e modelli
-file_path = r'D:\Teresa\Ingegneria\Laurea Magistrale\Tesi\MQTT_Client_15_10_2024_MySQL\MQTT_Client\Posizionamento\Algoritmi\Dataset_Beacon_iTag.csv'
-rps = load_and_preprocess_data(file_path)
+###############################################################################################################################
 
 with open(
         r'D:\Teresa\Ingegneria\Laurea Magistrale\Tesi\MQTT_Client_15_10_2024_MySQL\MQTT_Client\Posizionamento\Algoritmi\scaler.pkl',
         'rb') as scaler_model:
     scaler = joblib.load(scaler_model)
-
-# Access Points
-ap1 = AccessPoint(0, 0)
-ap2 = AccessPoint(0, 2.73)
-ap3 = AccessPoint(2.3, 0)
-aps = [ap1, ap2, ap3]
 
 # Configurazione MQTT
 broker = 'test.mosquitto.org'
@@ -114,29 +108,33 @@ client = setup_mqtt(broker, topic, Qos)
 
 # Crea un'istanza della classe Positioning
 positioning = Positioning();
+
+
 # Carica i modelli preaddestrati
+# with open(
+#       r'D:\Teresa\Ingegneria\Laurea Magistrale\Tesi\MQTT_Client_15_10_2024_MySQL\MQTT_Client\Posizionamento\Algoritmi\knn_model.pkl',
+#      'rb') as model_file_1:
+# knn_model = joblib.load(model_file_1)
+
+# with open(
+#         r'D:\Teresa\Ingegneria\Laurea Magistrale\Tesi\MQTT_Client_20_09_2024_MySQL\MQTT_Client\Posizionamento\Algoritmi\svc_model.pkl',
+#         'rb') as model_file_2:
+#     svc_model = joblib.load(model_file_2)
+
 with open(
-        r'D:\Teresa\Ingegneria\Laurea Magistrale\Tesi\MQTT_Client_15_10_2024_MySQL\MQTT_Client\Posizionamento\Algoritmi\knn_model.pkl',
-        'rb') as model_file_1:
-    knn_model = joblib.load(model_file_1)
+        r'D:\Teresa\Ingegneria\Laurea Magistrale\Tesi\MQTT_Client_20_09_2024_MySQL\MQTT_Client\Posizionamento\Algoritmi\rf_model.pkl',
+        'rb') as model_file_3:
+    rf_model = joblib.load(model_file_3)
 
-    # with open(
-    #         r'D:\Teresa\Ingegneria\Laurea Magistrale\Tesi\MQTT_Client_20_09_2024_MySQL\MQTT_Client\Posizionamento\Algoritmi\svc_model.pkl',
-    #         'rb') as model_file_2:
-    #     svc_model = joblib.load(model_file_2)
+# Assegna i modelli x e y all'istanza della classe Positioning
+positioning.model_x = rf_model['model_x']
+positioning.model_y = rf_model['model_y']
 
-    # with open(
-    #         r'D:\Teresa\Ingegneria\Laurea Magistrale\Tesi\MQTT_Client_20_09_2024_MySQL\MQTT_Client\Posizionamento\Algoritmi\rf_model.pkl',
-    #         'rb') as model_file_3:
-    #     rf_model = joblib.load(model_file_3)
-
-    # Assegna i modelli x e y all'istanza della classe Positioning
-    positioning.model_x = knn_model['model_x']
-    positioning.model_y = knn_model['model_y']
-
+###############################################################################################################################
 # Connessione al database
 db_conn, cursor = connect_to_mysql()
 
+###############################################################################################################################
 # Timeout per l'assenza di messaggi
 last_timestamp = time.time()
 timeout = 10
@@ -158,7 +156,6 @@ try:
             # Ordina i valori RSSI in base al MAC order
             ordered_rss_values = [observed_rss_values.get(mac, None) for mac in mac_order]
 
-            # Calcola la media dei valori RSSI per ogni MAC
             mac_values = {mac: [] for mac in mac_order}
             for mac in mac_order:
                 rssi = observed_rss_values.get(mac, None)
@@ -174,13 +171,13 @@ try:
                 # Scaling dei valori RSSI
                 scaled_rssi = scaler.transform([list(mean_rssi_values.values())])
 
-                predicted_position_knn = positioning.predict(scaled_rssi)[0]
+                predicted_position = positioning.predict(scaled_rssi)[0]
 
                 # Salvataggio nel database
                 # store_rssi_data(cursor, db_conn, 'position_knn', ordered_rss_values, predicted_position_1)
                 # store_rssi_data(cursor, db_conn, 'position_knn_optim', ordered_rss_values, predicted_position_2)
 
-                logging.info(f"Previsioni KNN: {predicted_position_knn}")
+                logging.info(f"Previsioni: {predicted_position}")
             else:
                 logging.warning("Mancano valori RSSI da uno o più beacon, impossibile fare previsioni.")
 
