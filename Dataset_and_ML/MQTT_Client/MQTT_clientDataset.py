@@ -10,8 +10,8 @@ broker = 'test.mosquitto.org'
 port = 1883
 topic = "beaconData"
 client_id = f'subscribe-{random.randint(0, 100)}'
-Qos = 1
-keep_alive = 60
+Qos = 0
+keep_alive = 20
 
 # Dizionario per memorizzare i dati ricevuti
 mac_rssi_data = {}

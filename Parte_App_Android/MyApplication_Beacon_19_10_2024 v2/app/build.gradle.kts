@@ -57,7 +57,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    implementation("org.altbeacon:android-beacon-library:2.20.6") //prima era semplicemente 2.20
+    //implementation("org.altbeacon:android-beacon-library:2.20.6") //prima era semplicemente 2.20
     implementation(libs.androidx.appcompat)
    // implementation(libs.firebase.firestore)
    // implementation(libs.firebase.database.ktx)
@@ -69,6 +69,12 @@ dependencies {
     implementation("org.bouncycastle:bcpkix-jdk15on:1.68")
     implementation ("org.eclipse.paho:org.eclipse.paho.android.service:1.1.1")
     implementation ("androidx.legacy:legacy-support-v4:1.0.0")
+
+
+    implementation ("com.polidea.rxandroidble2:rxandroidble:1.12.1")
+    implementation ("com.jakewharton.rxbinding2:rxbinding:2.2.0") // Se utilizzi RxBinding
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0") // Se utilizzi Retrofit
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0") // Se utilizzi Retrofit con Gson
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

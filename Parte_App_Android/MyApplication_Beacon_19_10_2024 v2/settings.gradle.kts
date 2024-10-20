@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "My Application_Beacon2"
+rootProject.name = "IndoorPositioniAPP"
 include(":app")
  

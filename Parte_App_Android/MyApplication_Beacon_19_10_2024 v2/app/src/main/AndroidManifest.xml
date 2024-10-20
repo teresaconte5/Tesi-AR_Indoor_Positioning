@@ -10,6 +10,9 @@
     <!-- Below is only needed if you want to read the device name or establish a bluetooth connection
     -->
 
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION"/>
+
+
     <uses-permission android:name="android.permission.BLUETOOTH_SCAN"/>
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT"/>
     <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -20,7 +23,7 @@
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
-        android:name="BeaconReferenceApplication"
+
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -35,6 +38,12 @@
         </activity>
         <activity android:name="com.example.myapplication_beacon2.permission.BeaconScanPermissionsActivity"
             android:exported="true"/>
+        <activity android:name=".Dataset" android:exported="true"/>
+
+        <service
+            android:name=".BeaconScanService"
+            android:foregroundServiceType="location"> <!-- Specifica il tipo di servizio in primo piano -->
+        </service>
     </application>
 
 </manifest>

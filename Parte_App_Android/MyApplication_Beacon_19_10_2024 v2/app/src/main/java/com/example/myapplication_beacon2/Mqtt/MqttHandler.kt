@@ -22,7 +22,7 @@ class MqttHandler(val topicId: String) {
         const val CONNECTION_KEEP_ALIVE_INTERVAL = 20
         const val CONNECTION_CLEAN_SESSION = true //broker non memorizza i messaggi ricevuti
         const val CONNECTION_RECONNECT = true
-        const val QOS = 1
+        const val QOS = 0
     }
 
 
