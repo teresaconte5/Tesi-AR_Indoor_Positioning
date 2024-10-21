@@ -35,7 +35,7 @@ class Dataset : AppCompatActivity() {
 
     // MQTT Handler
     private lateinit var mqttHandler: MqttHandler
-    private val mqttTopic = "beaconData" // Sostituisci con il tuo topic
+    private val mqttTopic = "beaconData" //  topic
 
     // Aggiungo il MANUFACTURER_ID qui
     private val MANUFACTURER_ID = 0x0105

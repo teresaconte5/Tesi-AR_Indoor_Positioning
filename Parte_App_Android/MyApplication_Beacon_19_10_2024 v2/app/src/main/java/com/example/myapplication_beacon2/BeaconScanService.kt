@@ -23,7 +23,7 @@ class BeaconScanService : Service() {
 
     private lateinit var rxBleClient: RxBleClient
     private var bleScanDisposable: Disposable? = null
-    private val manufacturerId = 0x0105 // ID del produttore desiderato
+    private val MANUFACTURER_ID = 0x0105 // ID del produttore desiderato
     private lateinit var mqttHandler: MqttHandler // Aggiungi MqttHandler qui
     private val mqttTopic ="beaconSend"
 
@@ -43,11 +43,12 @@ class BeaconScanService : Service() {
 
     private fun startScanning() {
         val scanFilter = ScanFilter.Builder()
-            .setManufacturerData(manufacturerId, byteArrayOf())
+            .setManufacturerData(MANUFACTURER_ID, byteArrayOf())
             .build()
 
         val scanSettings = ScanSettings.Builder()
             .setScanMode(ScanSettings.SCAN_MODE_LOW_LATENCY)
+            .setCallbackType(ScanSettings.CALLBACK_TYPE_ALL_MATCHES) // Attiva un callback per ogni annuncio Bluetooth trovato che corrisponde ai criteri del filtro.
             .build()
 
         bleScanDisposable = rxBleClient.scanBleDevices(scanSettings, scanFilter)
@@ -56,7 +57,7 @@ class BeaconScanService : Service() {
             .subscribe({ scanResult ->
                 val macAddress = scanResult.bleDevice.macAddress
                 val rssi = scanResult.rssi
-                Log.d("BeaconNuovo", "Rilevato beacon: $macAddress, RSSI: $rssi")
+                Log.d("Beacon", "Rilevato beacon: $macAddress, RSSI: $rssi")
 
                 val timestamp = LocalDateTime.now().toString()
                 val beaconData = JSONObject().apply {
@@ -65,7 +66,7 @@ class BeaconScanService : Service() {
                     put("RSSI", rssi)
                 }
 
-                // Invia i dati RSSI tramite MQTT (supponendo che mqttHandler sia già inizializzato)
+                // Invia i dati RSSI tramite MQTT
                 mqttHandler.publishMessage(mqttTopic, beaconData.toString())
 
             }, { throwable ->
