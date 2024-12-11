@@ -34,13 +34,15 @@ La Mobile Application è il cuore del sistema e fornisce le seguenti funzionalit
 - Gestisce connessioni al database delle posizioni per aggiornamenti in tempo reale.
   
 # Cloud Side #
-**1. Position Real-Time Database**
+**1. Position Real-Time Database: **
 Questo database contiene le posizioni degli utenti in tempo reale, popolato e aggiornato tramite il componente Microservices.
 
 **2. 3D Objects Database**
+
 Il 3D Objects Database memorizza i modelli 3D utilizzati nell’applicazione AR.
 
 **3. Microservices**
+
 I Microservices rappresentano il principale punto di connessione tra l’Edge Side e il Cloud Side. Questo componente è responsabile di:
 - Gestire le richieste di aggiornamento e recupero per il Position Real-Time Database e il 3D Objects Database.
 - Fornire un’interfaccia API per la Mobile Application, che permette la sincronizzazione dei dati e l’aggiornamento in tempo reale delle posizioni.
@@ -59,7 +61,9 @@ L'architettura realizzata differisce rispetto all'Architettura Proposta per la r
 ![architettura](https://github.com/teresaconte5/Tesi-AR_Indoor_Positioning/blob/main/images/Architettura_Realizzata.png)
 
 ## b) Component Repositories
-**App_Android**: applicazione realizzata per la raccolta dati RSSI provenienti dai Beacon [Repository] (https://github.com/teresaconte5/Tesi-AR_Indoor_Positioning/tree/main/App_Android)
-**Dataset_and_ML**: Creazione dataset e Algoritmi di Machine Learning(KNN,RF,SVR) [Repository] (https://github.com/teresaconte5/Tesi-AR_Indoor_Positioning/tree/main/Dataset_and_ML)
-**AR_Indoor_Positioning**: Sistema che integra modello ML per predizione della posizione e aggiornato AR con visualizzazione real-time.
+**App_Android**: applicazione realizzata per la raccolta dati RSSI provenienti dai Beacon [Repository] (https://github.com/teresaconte5/Tesi-AR_Indoor_Positioning/tree/main/App_Android).
+
+**Dataset_and_ML**: Creazione dataset e Algoritmi di Machine Learning(KNN,RF,SVR) [Repository] (https://github.com/teresaconte5/Tesi-AR_Indoor_Positioning/tree/main/Dataset_and_ML).
+
+**AR_Indoor_Positioning**: Sistema che integra modello ML per predizione della posizione e aggiornato AR con visualizzazione real-time. [Repository] ( https://github.com/teresaconte5/Tesi-AR_Indoor_Positioning/tree/main/AR_Indoor_Positioning)
 
