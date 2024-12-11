@@ -58,4 +58,7 @@ L'architettura realizzata differisce rispetto all'Architettura Proposta per la r
 
 ![architettura](https://github.com/teresaconte5/Tesi-AR_Indoor_Positioning/blob/main/images/Architettura_Realizzata.png)
 
+## b) Component Repositories
+**App_Android**: applicazione realizzata per la raccolta dati RSSI provenienti dai Beacon [Repository]
+
 
