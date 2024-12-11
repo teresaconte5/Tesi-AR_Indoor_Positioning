@@ -6,7 +6,8 @@ scena AR accessibile tramite smartphone.
 
 ## a) System Architecture
 # Architettura Proposta
-L’architettura proposta è composta da una parte **Edge Side**, che gestisce i componenti e le operazioni vicine all’utente e ai dispositivi hardware, e una parte **Cloud Side**, che fornisce supporto per la gestione dei dati e dei contenuti centralizzati.
+L’architettura proposta è composta da una parte **Edge Side**, che gestisce i componenti e le operazioni vicine all’utente e ai dispositivi hardware, e una parte **Cloud Side**, che fornisce supporto per 
+la gestione dei dati e dei contenuti centralizzati.
 ![architettura](https://github.com/teresaconte5/Tesi-AR_Indoor_Positioning/blob/main/images/Architettura_proposta.png).
 # Edge Side #
 
@@ -45,9 +46,8 @@ I Microservices rappresentano il principale punto di connessione tra l’Edge Si
 - Fornire un’interfaccia API per la Mobile Application, che permette la sincronizzazione dei dati e l’aggiornamento in tempo reale delle posizioni.
 - Coordinare la distribuzione degli oggetti 3D tra gli utenti e gestire la visualizzazione AR in base ai dati presenti nei database.
 
-** 4. 3D Contents Management Administrator GUI**
-Questa interfaccia grafica `e destinata agli amministratori del sistema per la gestione
-dei contenuti 3D.
+**4. 3D Contents Management Administrator GUI**
+Questa interfaccia grafica `e destinata agli amministratori del sistema per la gestione dei contenuti 3D.
 
 # Architettura realmente realizzata del sistema#
 
