@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three.js with AR.js</title>
+    <style>
+        html, body {
+            height: 100%;
+        }
+        canvas {
+            display: block;
+            width: 100vw;
+        height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas1"></canvas>
+    <video id='video1' autoplay playsinline style='display:none'></video>
+    <!-- A-Frame scene -->
+    <a-scene 
+    vr-mode-ui="enabled: false" 
+    arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false"
+    >
+        <a-camera id="mainCamera" look-controls-enabled='false' arjs-look-controls='smoothingFactor:0.1'  far=30 
+        gps-new-camera="gpsMinDistance: 5 " rotation-reader></a-camera>
+    </a-scene>
+    Scripts
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js"></script>
+  
+    <!-- Custom JS -->
+    <script type="module" src="Prova_modifica_cubo_touch_cell_Prof_Dario.js"></script>
+
+ <!--    <script>
+
+        function changeGPS (lat,long){
+            var camera= document.getElementById("mainCamera");
+            camera.setAttribute("gps-new-camera", "gpsMinDistance=1;simulateLatitude="+lat+"; simulateLongitude="+long+"; gpsMinDistance: 5" )
+        }
+        window.addEventListener("load",function(){
+            setTimeout(changeGPS(51.109,-0.829),8000);
+        }
+    );
+    </script> -->
+</body>
+
+
+
+</html>
