@@ -47,7 +47,7 @@ I Microservices rappresentano il principale punto di connessione tra l’Edge Si
 - Coordinare la distribuzione degli oggetti 3D tra gli utenti e gestire la visualizzazione AR in base ai dati presenti nei database.
 
 **4. 3D Contents Management Administrator GUI**
-Questa interfaccia grafica `e destinata agli amministratori del sistema per la gestione dei contenuti 3D.
+Questa interfaccia grafica è destinata agli amministratori del sistema per la gestione dei contenuti 3D.
 
 # Architettura realmente realizzata del sistema#
 
@@ -59,6 +59,7 @@ L'architettura realizzata differisce rispetto all'Architettura Proposta per la r
 ![architettura](https://github.com/teresaconte5/Tesi-AR_Indoor_Positioning/blob/main/images/Architettura_Realizzata.png)
 
 ## b) Component Repositories
-**App_Android**: applicazione realizzata per la raccolta dati RSSI provenienti dai Beacon [Repository]
-
+**App_Android**: applicazione realizzata per la raccolta dati RSSI provenienti dai Beacon [Repository] (https://github.com/teresaconte5/Tesi-AR_Indoor_Positioning/tree/main/App_Android)
+**Dataset_and_ML**: Creazione dataset e Algoritmi di Machine Learning(KNN,RF,SVR) [Repository] (https://github.com/teresaconte5/Tesi-AR_Indoor_Positioning/tree/main/Dataset_and_ML)
+**AR_Indoor_Positioning**: Sistema che integra modello ML per predizione della posizione e aggiornato AR con visualizzazione real-time.
 
