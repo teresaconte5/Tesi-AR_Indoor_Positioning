@@ -4,7 +4,7 @@ Questo progetto esplora un sistema di posizionamento indoor basato su machine le
 utenti in ambienti chiusi. L'architettura attuale utilizza segnali RSSI provenienti da beacon Bluetooth e modelli di machine learning per stimare le coordinate degli utenti, visualizzandole poi in una 
 scena AR accessibile tramite smartphone.
 
-## a) System Architecture
+# a) System Architecture
 # Architettura Proposta
 L’architettura proposta è composta da una parte **Edge Side**, che gestisce i componenti e le operazioni vicine all’utente e ai dispositivi hardware, e una parte **Cloud Side**, che fornisce supporto per 
 la gestione dei dati e dei contenuti centralizzati.
@@ -60,7 +60,7 @@ L'architettura realizzata differisce rispetto all'Architettura Proposta per la r
 
 ![architettura](https://github.com/teresaconte5/Tesi-AR_Indoor_Positioning/blob/main/images/Architettura_Realizzata.png)
 
-## b) Component Repositories
+# b) Component Repositories
 - **App_Android**: applicazione realizzata per la raccolta dati RSSI provenienti dai Beacon [Repository] (https://github.com/teresaconte5/Tesi-AR_Indoor_Positioning/tree/main/App_Android).
 
 - **Dataset_and_ML**: Creazione dataset e Algoritmi di Machine Learning(KNN,RF,SVR) [Repository] (https://github.com/teresaconte5/Tesi-AR_Indoor_Positioning/tree/main/Dataset_and_ML).
