@@ -49,7 +49,7 @@ I Microservices rappresentano il principale punto di connessione tra l’Edge Si
 Questa interfaccia grafica `e destinata agli amministratori del sistema per la gestione
 dei contenuti 3D.
 
-# Architettura realmente realizzata del sistema del sistema
+# Architettura realmente realizzata del sistema#
 
 L'architettura realizzata differisce rispetto all'Architettura Proposta per la realizzazione del modulo AR:
 - Modulo AR è  implementato localmente sul server e non direttamente sul dispositivo mobile.
