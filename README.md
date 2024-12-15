@@ -1,7 +1,8 @@
 # AR Indoor Positioning
 ## Overview
-Questo progetto esplora un sistema di posizionamento indoor basato su machine learning integrato con un'interfaccia di realtà aumentata (AR), progettato per tracciare in tempo reale la posizione degli
-utenti in ambienti chiusi. L'architettura attuale utilizza segnali RSSI provenienti da beacon Bluetooth e modelli di machine learning per stimare le coordinate degli utenti, visualizzandole poi in una 
+La repository è stata sviluppata nell'ambito della mia tesi di laurea e documenta il lavoro svolto per la progettazione e realizzazione di un sistema di posizionamento indoor basato su Realtà Aumentata (AR). Il progetto affronta il problema della localizzazione in ambienti interni sfruttando tecniche avanzate e strumenti AR per offrire una soluzione innovativa e a basso costo.
+
+L'architettura attuale utilizza segnali RSSI provenienti da beacon Bluetooth e modelli di machine learning per stimare le coordinate degli utenti, visualizzandole poi in una 
 scena AR accessibile tramite smartphone.
 
 # a) System Architecture
